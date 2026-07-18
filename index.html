@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Julian Ibarz — AI & robotics leader. Senior Manager at Tesla AI; previously Google Brain and Google Maps.">
+<title>Julian Ibarz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f4f2;
+    --ink: #17181a;
+    --muted: #5c6066;
+    --line: rgba(23, 24, 26, 0.08);
+    --radius: 18px;
+    --tile: #ffffff;
+    --tint-warm: #f7f1e8;
+    --tint-cool: #eaf0f6;
+    --accent: #c2543a;
+    --page-max: 920px;
+    --gap: clamp(12px, 1.6vw, 18px);
+    --pad: clamp(18px, 2.4vw, 28px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    padding: clamp(16px, 3vw, 48px);
+  }
+
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+  }
+
+  .tile {
+    background: var(--tile);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: var(--pad);
+  }
+
+  /* ---- hero ---- */
+  .hero {
+    background: var(--tint-warm);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: clamp(20px, 3vw, 40px);
+    align-items: center;
+  }
+  .hero-copy { min-width: 0; }
+  .kicker {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    margin-top: 8px;
+  }
+  .role {
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-top: 12px;
+    line-height: 1.3;
+  }
+  .subrole {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .hero-photo {
+    width: clamp(140px, 20vw, 220px);
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: contain;
+    object-position: center center;
+    border-radius: clamp(18px, 2vw, 28px);
+    border: 3px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 12px 32px rgba(23, 24, 26, 0.12);
+    background: #e8e4dc;
+  }
+  .social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    transition: background 150ms ease, color 150ms ease, transform 150ms ease;
+  }
+  .social a:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  /* ---- bio ---- */
+  .bio {
+    font-size: clamp(15px, 1.5vw, 17px);
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 62ch;
+  }
+  .bio strong { color: var(--ink); font-weight: 600; }
+
+  /* ---- now / previously ---- */
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+  }
+  .split .tile h2,
+  .section-h2 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .section-h2 { margin-bottom: 14px; }
+  .split .org {
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .split .line {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.45;
+  }
+  .split .now { background: var(--tint-cool); }
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: rgba(194, 84, 58, 0.12);
+    color: var(--accent);
+    vertical-align: middle;
+    margin-left: 8px;
+  }
+
+  /* ---- cards (demos / talks) ---- */
+  .cards {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gap);
+  }
+  .cards.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cards li {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: clamp(14px, 1.8vw, 18px);
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .demos { background: var(--tint-warm); }
+  .talks { background: var(--tint-cool); }
+  .yr {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+  }
+  .name {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .name a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(194, 84, 58, 0.35);
+  }
+  .name a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .detail {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.4;
+    margin-top: auto;
+    padding-top: 4px;
+  }
+
+  /* ---- publications ---- */
+  .pubs .total {
+    font-size: 13px;
+    color: var(--muted);
+    margin: -6px 0 12px;
+  }
+  .pubs ol { list-style: none; }
+  .pubs li {
+    display: grid;
+    grid-template-columns: 3.2rem minmax(0, 1fr) auto;
+    gap: 8px 14px;
+    align-items: baseline;
+    padding: 10px 0;
+    border-top: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .pubs li:first-child { border-top: none; padding-top: 0; }
+  .pubs .yr {
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .pubs a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(194, 84, 58, 0.35);
+  }
+  .pubs a:hover { border-bottom-color: var(--accent); }
+  .pubs .cite {
+    color: var(--muted);
+    font-size: 12.5px;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .scholar-link {
+    display: inline-flex;
+    margin-top: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .scholar-link:hover { text-decoration: underline; }
+
+  footer {
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    padding-top: 12px;
+  }
+
+  @media (max-width: 720px) {
+    .cards, .cards.three { grid-template-columns: 1fr; }
+    .pubs li {
+      grid-template-columns: 3rem 1fr;
+      gap: 4px 10px;
+    }
+    .pubs .cite {
+      grid-column: 2;
+      white-space: normal;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      grid-template-columns: 1fr;
+      justify-items: start;
+    }
+    .hero-photo {
+      order: -1;
+      width: 132px;
+    }
+    .split { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .social a { transition: none; }
+    .social a:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <section class="tile hero" aria-label="Introduction">
+    <div class="hero-copy">
+      <p class="kicker">AI &middot; Robotics &middot; Research to Production</p>
+      <h1>Julian Ibarz</h1>
+      <p class="role">AI &amp; robotics leader — from frontier research to the factory floor.</p>
+      <p class="subrole">Senior Manager, Tesla AI &middot; previously Google Brain</p>
+      <div class="social" aria-label="Profiles">
+        <a href="https://x.com/julianibarz" target="_blank" rel="noopener" aria-label="X (preferred)" title="X — preferred">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/julianibarz/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+        </a>
+        <a href="https://github.com/julianibarz" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a href="https://scholar.google.com/citations?user=l-la0GQAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+        </a>
+      </div>
+    </div>
+    <img
+      class="hero-photo"
+      src="assets/julian.jpg?v=6"
+      width="220"
+      height="293"
+      alt="Portrait of Julian Ibarz"
+      decoding="async"
+      fetchpriority="high"
+    >
+  </section>
+
+  <section class="tile" aria-label="About">
+    <p class="bio">
+      For 13+ years I've taken frontier AI into production.
+      At <strong>Google Maps</strong> I led the AI work and defined its strategy — including the first neural network on Google's TPUs in production and worldwide map automation from Street View.
+      I built the manipulation-focused robot learning team at <strong>Google Brain</strong>, then the <strong>Optimus AI team</strong> at Tesla, where AI demos help define the right hardware for production.
+    </p>
+  </section>
+
+  <div class="split">
+    <section class="tile now" aria-label="Now">
+      <h2>Now</h2>
+      <p class="org">Tesla AI<span class="badge">Current</span></p>
+      <p class="line">Senior Manager · first leadership hire for Optimus AI · building the Optimus AI team and demos that shape hardware for production.</p>
+    </section>
+    <section class="tile" aria-label="Previously">
+      <h2>Previously</h2>
+      <p class="org">Google</p>
+      <p class="line"><strong>Maps</strong> — led AI &amp; defined strategy; first neural net on TPUs in production; map automation from Street View. <strong>Brain</strong> — built &amp; led the manipulation-focused robot learning team (QT-Opt, RT-1).</p>
+    </section>
+  </div>
+
+  <!-- Demos first: most recent, Tesla -->
+  <section class="tile demos" aria-label="Selected demos">
+    <h2 class="section-h2">Selected demos</h2>
+    <ol class="cards three">
+      <li>
+        <span class="yr">2024</span>
+        <span class="name"><a href="https://x.com/julianibarz/status/1846801329030934944" target="_blank" rel="noopener">Human-interaction autonomy — handing snacks in the lab</a></span>
+        <span class="detail">Oct 2024 · not teleoperated</span>
+      </li>
+      <li>
+        <span class="yr">2024</span>
+        <span class="name"><a href="https://x.com/julianibarz/status/1787121019989504017" target="_blank" rel="noopener">Factory battery sorting</a></span>
+        <span class="detail">May 2024 · autonomous on the factory floor</span>
+      </li>
+      <li>
+        <span class="yr">2023</span>
+        <span class="name"><a href="https://x.com/julianibarz/status/1658580808880492544" target="_blank" rel="noopener">First end-to-end learned grasp on Optimus</a></span>
+        <span class="detail">May 2023 · from human demonstrations</span>
+      </li>
+    </ol>
+  </section>
+
+  <section class="tile talks" aria-label="Talks">
+    <h2 class="section-h2">Talks</h2>
+    <ol class="cards">
+      <li>
+        <span class="yr">2019</span>
+        <span class="name"><a href="https://docs.google.com/presentation/d/e/2PACX-1vTZD619SHMJ6yWjo-sO4eJNhWs4HiGDskqwKutim8oqYue5Zfxv-B6MrwGg5Q32eDhRPlfKA77QwBYx/pub?start=false&amp;loop=false&amp;delayms=60000" target="_blank" rel="noopener">Challenges of self-supervision via interaction in robotics</a></span>
+        <span class="detail">IROS 2019 · Open-Ended Learning workshop · slides</span>
+      </li>
+      <li>
+        <span class="yr">2014</span>
+        <span class="name"><a href="https://www.youtube.com/watch?v=vGPI_JvLoN0" target="_blank" rel="noopener">Multi-digit number recognition from Street View imagery</a></span>
+        <span class="detail">ICLR 2014 · with Ian Goodfellow &amp; Yaroslav Bulatov · video</span>
+      </li>
+    </ol>
+  </section>
+
+  <section class="tile pubs" aria-label="Selected publications">
+    <h2 class="section-h2">Selected publications</h2>
+    <p class="total">28,500+ citations &middot; h-index 28</p>
+    <ol>
+      <li>
+        <span class="yr">2022</span>
+        <span><a href="https://arxiv.org/abs/2204.01691" target="_blank" rel="noopener">Do As I Can, Not As I Say: Grounding language in robotic affordances (SayCan)</a></span>
+        <span class="cite">4,300+</span>
+      </li>
+      <li>
+        <span class="yr">2022</span>
+        <span><a href="https://research.google/blog/rt-1-robotics-transformer-for-real-world-control-at-scale/" target="_blank" rel="noopener">RT-1: Robotics Transformer for real-world control at scale</a></span>
+        <span class="cite">2,900+</span>
+      </li>
+      <li>
+        <span class="yr">2018</span>
+        <span><a href="https://arxiv.org/abs/1806.10293" target="_blank" rel="noopener">QT-Opt: Scalable deep reinforcement learning for vision-based robotic manipulation</a></span>
+        <span class="cite">2,200+</span>
+      </li>
+      <li>
+        <span class="yr">2017</span>
+        <span><a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=l-la0GQAAAAJ&amp;citation_for_view=l-la0GQAAAAJ:WF5omc3nYNoC" target="_blank" rel="noopener">In-datacenter performance analysis of a Tensor Processing Unit</a></span>
+        <span class="cite">7,500+</span>
+      </li>
+      <li>
+        <span class="yr">2017</span>
+        <span><a href="https://research.google/blog/updating-google-maps-with-deep-learning-and-street-view/" target="_blank" rel="noopener">Updating Google Maps with Deep Learning and Street View</a></span>
+        <span class="cite"></span>
+      </li>
+      <li>
+        <span class="yr">2016</span>
+        <span><a href="https://arxiv.org/abs/1603.02199" target="_blank" rel="noopener">Learning hand-eye coordination for robotic grasping with deep learning</a></span>
+        <span class="cite">3,300+</span>
+      </li>
+      <li>
+        <span class="yr">2013</span>
+        <span><a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=l-la0GQAAAAJ&amp;citation_for_view=l-la0GQAAAAJ:u5HHmVD_uO8C" target="_blank" rel="noopener">Multi-digit number recognition from Street View imagery using deep CNNs</a></span>
+        <span class="cite">1,000+</span>
+      </li>
+    </ol>
+    <a class="scholar-link" href="https://scholar.google.com/citations?user=l-la0GQAAAAJ" target="_blank" rel="noopener">All publications on Google Scholar &rarr;</a>
+  </section>
+
+  <footer>© 2026 Julian Ibarz</footer>
+</div>
+</body>
+</html>
