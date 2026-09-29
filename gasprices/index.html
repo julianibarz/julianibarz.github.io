@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="What's driving $6 California gas and record US diesel in September 2026, and how much Ukraine's strikes on Russian refineries have to do with it.">
+<meta property="og:title" content="What's behind the $6 gallon">
+<meta property="og:description" content="Iran, Russian refineries and California's premium: what's driving $6 gas and record diesel. September 28, 2026.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.julianibarz.com/gasprices/">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>The $6 Gallon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: one reading column (~68ch) on an asphalt-tinted ground; a dark pump-board strip up top; charts and tables break out to a wider measure. */
+:root {
+  --bg: #f3f4f6;
+  --surface: #ffffff;
+  --ink: #15171b;
+  --ink-2: #474d57;
+  --muted: #737a85;
+  --rule: #dcdfe4;
+  --accent: #9a5500;
+  --board: #17191d;
+  --board-ink: #ffb53d;
+  --board-sub: #a7adb6;
+  --us: #2a78d6;
+  --ca: #eb6834;
+  --bar: #3d4450;
+  --crit: #d03b3b;
+  --warn: #b77900;
+  --good: #0c8a0c;
+  --seg1: #98a1ad; --seg2: #c6ccd4; --seg3: #dfe3e8; --seg-ink: #15171b; --hot-ink: #ffffff;
+  --display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", system-ui, sans-serif;
+  --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111317; --surface: #191c21; --ink: #eceef1; --ink-2: #b7bdc6; --muted: #8b929c;
+    --rule: #2b3037; --accent: #f0a43a; --board: #0a0b0d; --board-ink: #ffb53d; --board-sub: #969ca5;
+    --us: #3987e5; --ca: #d95926; --bar: #aeb5bf; --crit: #e66767; --warn: #e0a31e; --good: #19b019;
+    --seg1: #5d6570; --seg2: #464d57; --seg3: #363b43; --seg-ink: #eceef1; --hot-ink: #1d0f0f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111317; --surface: #191c21; --ink: #eceef1; --ink-2: #b7bdc6; --muted: #8b929c;
+  --rule: #2b3037; --accent: #f0a43a; --board: #0a0b0d; --board-ink: #ffb53d; --board-sub: #969ca5;
+  --us: #3987e5; --ca: #d95926; --bar: #aeb5bf; --crit: #e66767; --warn: #e0a31e; --good: #19b019;
+  --seg1: #5d6570; --seg2: #464d57; --seg3: #363b43; --seg-ink: #eceef1; --hot-ink: #1d0f0f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.55; }
+.page { max-width: 1060px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 72px; display: grid; gap: 56px; }
+.col { max-width: 700px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: 0.005em; }
+h1 { font-size: clamp(2.6rem, 6vw, 4.2rem); line-height: 0.98; font-weight: 700; }
+h2 { font-size: 2rem; line-height: 1.05; font-weight: 700; }
+h3 { font-size: 1.3rem; font-weight: 600; line-height: 1.15; }
+p { margin: 0; }
+.stack { display: grid; gap: 14px; }
+.stack-lg { display: grid; gap: 22px; }
+.eyebrow { font-family: var(--display); font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.85rem; color: var(--accent); }
+.lede { font-size: 1.2rem; color: var(--ink-2); max-width: 640px; }
+.small { font-size: 0.88rem; color: var(--muted); }
+a { color: inherit; text-decoration-color: var(--muted); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+ul.clean { margin: 0; padding-left: 1.1em; display: grid; gap: 8px; }
+strong { font-weight: 600; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* pump board */
+.board { background: var(--board); border-radius: 10px; padding: 22px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; }
+.cell { padding: 6px 16px 8px; display: grid; gap: 2px; border-left: 1px solid rgba(255,255,255,0.08); min-width: 0; }
+.cell:first-child { border-left: 0; }
+.cell .lbl { font-family: var(--display); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.82rem; color: var(--board-sub); }
+.cell .px { font-family: var(--display); font-weight: 600; font-size: clamp(2.4rem, 5vw, 3.4rem); line-height: 1; color: var(--board-ink); font-variant-numeric: tabular-nums; }
+.cell .px sup { font-size: 0.42em; vertical-align: 0.95em; margin-left: 1px; }
+.cell .px .dol { font-size: 0.55em; vertical-align: 0.55em; margin-right: 2px; opacity: 0.85; }
+.cell .sub { font-size: 0.85rem; color: var(--board-sub); }
+.cell.hl .lbl { color: #ffd28a; }
+@media (max-width: 760px) { .board { grid-template-columns: repeat(2, minmax(0,1fr)); row-gap: 14px; } .cell:nth-child(3) { border-left: 0; } }
+
+/* answer */
+.answer { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 36px; align-items: start; }
+@media (max-width: 860px) { .answer { grid-template-columns: minmax(0,1fr); } }
+ol.points { margin: 0; padding: 0; list-style: none; counter-reset: p; display: grid; gap: 16px; }
+ol.points li { counter-increment: p; display: grid; grid-template-columns: 34px minmax(0,1fr); gap: 10px; }
+ol.points li::before { content: counter(p); font-family: var(--display); font-weight: 700; font-size: 1.5rem; color: var(--accent); line-height: 1.1; }
+.paste { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 18px; display: grid; gap: 12px; }
+.paste-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.paste pre { margin: 0; white-space: pre-wrap; font-family: var(--body); font-size: 0.92rem; line-height: 1.5; color: var(--ink-2); max-height: 360px; overflow: auto; }
+button.copy { font-family: var(--display); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.85rem; background: var(--ink); color: var(--bg); border: 0; border-radius: 6px; padding: 7px 12px; cursor: pointer; }
+button.copy:hover { opacity: 0.88; }
+
+/* chart */
+.figure { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 20px; display: grid; gap: 14px; }
+.legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 0.9rem; color: var(--ink-2); align-items: center; }
+.key { display: inline-flex; align-items: center; gap: 7px; }
+.key i { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
+.panels { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
+@media (max-width: 760px) { .panels { grid-template-columns: minmax(0,1fr); } }
+.panel { position: relative; min-width: 0; }
+.panel h3 { font-size: 1.1rem; margin-bottom: 4px; }
+.panel svg { width: 100%; height: auto; display: block; overflow: visible; }
+.panel svg text { fill: var(--muted); font-family: var(--body); font-size: 11px; }
+.panel svg .ev text { fill: var(--ink-2); font-size: 10.5px; }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 0.8rem; line-height: 1.35; padding: 7px 9px; border-radius: 6px; white-space: nowrap; transform: translate(-50%, -100%); font-variant-numeric: tabular-nums; }
+.tip b { font-weight: 600; }
+
+/* bottlenecks */
+.three { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0; border-top: 2px solid var(--ink); }
+.three > div { padding: 18px 20px 4px 0; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.three > div + div { padding-left: 20px; border-left: 1px solid var(--rule); }
+@media (max-width: 860px) { .three { grid-template-columns: minmax(0,1fr); } .three > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); } }
+.chip { display: inline-flex; align-items: center; gap: 6px; font-family: var(--display); font-weight: 600; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 9px 2px 7px; border-radius: 999px; border: 1px solid currentColor; width: fit-content; }
+.chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.chip.crit { color: var(--crit); } .chip.warn { color: var(--warn); } .chip.good { color: var(--good); } .chip.flat { color: var(--muted); }
+.facts { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 0.95rem; color: var(--ink-2); }
+.facts li { padding-left: 14px; position: relative; }
+.facts li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 6px; height: 1px; background: var(--muted); }
+
+/* verdict / range chart */
+.verdict { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; align-items: start; }
+@media (max-width: 860px) { .verdict { grid-template-columns: minmax(0,1fr); } }
+blockquote { margin: 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--accent); font-family: var(--display); font-size: 1.55rem; line-height: 1.15; font-weight: 500; }
+blockquote cite { display: block; font-family: var(--body); font-style: normal; font-size: 0.85rem; color: var(--muted); margin-top: 6px; }
+.ranges { display: grid; gap: 14px; }
+.rrow { display: grid; grid-template-columns: 150px minmax(0,1fr) 68px; gap: 12px; align-items: center; font-size: 0.93rem; }
+.rrow .track { position: relative; height: 14px; background: linear-gradient(to right, var(--rule) 1px, transparent 1px) 0 0 / 25% 100%, transparent; border-bottom: 1px solid var(--rule); }
+.rrow .rng { position: absolute; top: 2px; height: 10px; border-radius: 3px; background: var(--bar); }
+.rrow .val { font-variant-numeric: tabular-nums; text-align: right; font-weight: 600; }
+.axis { display: grid; grid-template-columns: 150px minmax(0,1fr) 68px; gap: 12px; font-size: 0.75rem; color: var(--muted); }
+.axis .ticks { display: flex; justify-content: space-between; font-variant-numeric: tabular-nums; }
+@media (max-width: 520px) { .rrow, .axis { grid-template-columns: 110px minmax(0,1fr) 56px; } }
+
+/* tables */
+.tablewrap { overflow-x: auto; border-top: 2px solid var(--ink); }
+table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 0.95rem; }
+th, td { text-align: left; vertical-align: top; padding: 11px 14px 11px 0; border-bottom: 1px solid var(--rule); }
+th { font-family: var(--display); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.8rem; color: var(--muted); }
+td:first-child { font-weight: 600; width: 30%; }
+.follow { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px 28px; }
+@media (max-width: 760px) { .follow { grid-template-columns: minmax(0,1fr); } }
+.follow div { display: grid; gap: 2px; font-size: 0.93rem; color: var(--ink-2); min-width: 0; }
+.follow a { font-weight: 600; color: var(--ink); }
+.sources { columns: 2 320px; column-gap: 32px; font-size: 0.85rem; color: var(--ink-2); padding-left: 1.1em; margin: 0; }
+.sources li { break-inside: avoid; margin-bottom: 6px; }
+.gal { display: grid; gap: 12px; }
+.grow { display: grid; grid-template-columns: 92px minmax(0,1fr); gap: 12px; align-items: center; }
+.glbl { font-size: 0.85rem; color: var(--muted); display: grid; line-height: 1.2; }
+.glbl b { font-family: var(--display); font-size: 1.4rem; color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.gbar { display: flex; gap: 2px; height: 44px; }
+.gs { display: flex; align-items: center; justify-content: center; min-width: 0; overflow: hidden; font-size: 0.85rem; font-weight: 600; color: var(--seg-ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.gs:first-child { border-radius: 4px 0 0 4px; } .gs:last-child { border-radius: 0 4px 4px 0; }
+.gs.hot { color: var(--hot-ink); }
+@media (max-width: 520px) { .gs { font-size: 0.72rem; } .grow { grid-template-columns: 70px minmax(0,1fr); } }
+hr.sep { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+@media (prefers-reduced-motion: no-preference) { .rng { transition: width .4s ease; } }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <header class="stack-lg">
+    <div class="stack">
+      <div class="eyebrow">Research note · September 28, 2026</div>
+      <h1>What's behind the $6 gallon</h1>
+      <p class="lede">The Bay Area $6 is California gasoline. Nationally, the $6 is diesel. They have different causes. Gasoline follows crude, and crude follows the Iran war. Diesel is short on its own, because the Gulf, Russia and China have all stopped exporting much of it at once.</p>
+    </div>
+    <div class="board" role="group" aria-label="Average pump prices, GasBuddy, September 28, 2026">
+      <div class="cell hl"><span class="lbl">California regular</span><span class="px"><span class="dol">$</span>6.32</span><span class="sub">+14¢ this week · SF $6.40</span></div>
+      <div class="cell"><span class="lbl">US diesel</span><span class="px"><span class="dol">$</span>6.45</span><span class="sub">Record $6.53 on Sep 21 (EIA)</span></div>
+      <div class="cell"><span class="lbl">California diesel</span><span class="px"><span class="dol">$</span>8.35</span><span class="sub">Some pumps capped at $9.999</span></div>
+      <div class="cell"><span class="lbl">US regular</span><span class="px"><span class="dol">$</span>4.42</span><span class="sub">+$1.34 vs a year ago</span></div>
+    </div>
+    <p class="small">State averages from GasBuddy's Sep 28 weekly report. AAA shows CA regular at $6.35 and diesel at $8.42. EIA's volume-weighted CA gasoline figure is $6.00 for the week of Sep 21.</p>
+  </header>
+
+  <section class="answer">
+    <div class="stack-lg">
+      <h2>The short answer</h2>
+      <ol class="points">
+        <li><div><strong>Crude is up about $35 a barrel because of the Iran war.</strong> Brent was about $71 before the Feb 28 strikes and is about $107 today. That adds roughly 85¢ to every gallon of anything. Middle East flows through Hormuz are recovering, but trackers put them anywhere from 68% to 94% of normal. Shipping out of the Gulf now costs around $28–30 a barrel in freight alone.</div></li>
+        <li><div><strong>Diesel is a refining shortage on top of that.</strong> Gulf diesel exports are about a quarter of pre-war levels. Russia's diesel exports are down about 80%, from Ukraine's drone campaign plus Moscow's own export ban. China has cut fuel exports too. US refiners are running at 96–97% and shipping record volumes abroad, so US distillate stocks sit 12% below normal. The margin between crude and diesel is now about $2.67 a gallon, up from $0.85 a year ago.</div></li>
+        <li><div><strong>California's gas price is the national shock on top of a fixed premium.</strong> Since February, CA gasoline rose $1.56 and the US average rose $1.54. The CA premium over the US was about $1.50 before the war and is about $1.53 now. Taxes and climate programs account for about $1.20 of it. The two recent refinery closures account for most of the rest.</div></li>
+      </ol>
+    </div>
+    <div class="paste">
+      <div class="paste-head">
+        <span class="eyebrow">TL;DR</span>
+        <button class="copy" id="copyBtn" type="button">Copy text</button>
+      </div>
+<pre id="pasteText">• California gas (~$6.30) is the national shock on top of CA's usual ~$1.50 premium. Since February, CA gas rose $1.56 and the US average $1.54, so the CA premium barely moved.
+• The shock is the Iran war: Brent went from ~$71 to ~$107, about 85¢ a gallon. Hormuz flows are recovering (68–94% of normal depending on the tracker), but Gulf freight costs ~$28–30 a barrel.
+• Diesel ($6.45 US, $8.35 CA, both records) is a refinery shortage: Gulf diesel exports are ~¼ of pre-war, Russia's are down ~80%, China cut exports. The diesel refining margin is ~$2.67 a gallon vs $0.85 a year ago.
+• Trump's Ukraine claim is partly true for diesel (~15–30% of the rise since February) and wrong for gasoline and crude. The Gulf lost 2–3x more diesel than Russia from March to August.
+• Julian's Stahel point holds for diesel into winter: Russian refining is down about half and its export ban is being extended. For crude and gasoline, Iran still sets the price. Trump rejected Tehran's offer to reopen Hormuz on Sep 26.</pre>
+    </div>
+  </section>
+
+  <section class="stack-lg">
+    <div class="stack col">
+      <h2>A year at the pump</h2>
+      <p>Weekly EIA retail averages, dollars per gallon. The dashed line marks $6. The US average and California move almost in lockstep since the war began. The gap between the two lines is California's structural premium, and it has barely changed.</p>
+    </div>
+    <div class="figure">
+      <div class="legend" aria-hidden="true">
+        <span class="key"><i style="background:var(--ca)"></i>California</span>
+        <span class="key"><i style="background:var(--us)"></i>US average</span>
+      </div>
+      <div class="panels">
+        <div class="panel" id="p-gas"><h3>Gasoline, regular</h3></div>
+        <div class="panel" id="p-dsl"><h3>Diesel</h3></div>
+      </div>
+      <p class="small">Source: EIA Gasoline and Diesel Fuel Update, weekly series through Sep 21, 2026. Markers: A = US–Israel strikes on Iran, Hormuz closed (Feb 28). B = Iran truce collapses and Russia bans diesel exports (Jul 8). C = drones hit Saudi East–West pipeline pump stations (Sep 10–11).</p>
+    </div>
+  </section>
+
+  <section class="stack-lg">
+    <div class="stack col">
+      <h2>Inside a gallon of diesel</h2>
+      <p>Most of diesel's rise is refining margin, not crude. Over the past year the retail price rose $2.78. The margin between crude and diesel accounts for $1.82 of that and crude for $0.81. In September the NY Harbor diesel margin over WTI averaged about $110 a barrel, the highest monthly average in EIA data. The previous record was $95 in October 2022, and the norm before the war was $16–29.</p>
+    </div>
+    <div class="figure">
+      <div class="legend" aria-hidden="true">
+        <span class="key"><i style="background:var(--crit);height:10px;width:10px;border-radius:2px"></i>Refining margin</span>
+        <span class="key"><i style="background:var(--seg1);height:10px;width:10px;border-radius:2px"></i>Crude</span>
+        <span class="key"><i style="background:var(--seg2);height:10px;width:10px;border-radius:2px"></i>Taxes</span>
+        <span class="key"><i style="background:var(--seg3);height:10px;width:10px;border-radius:2px"></i>Distribution and retail</span>
+      </div>
+      <div class="gal" role="table" aria-label="US diesel price components, year ago versus now">
+        <div class="grow" role="row">
+          <span class="glbl" role="rowheader">Sep 2025<b>$3.75</b></span>
+          <div class="gbar" style="width:57.4%">
+            <span class="gs" style="flex:1.50;background:var(--seg1)" role="cell" title="Crude $1.50">$1.50</span>
+            <span class="gs hot" style="flex:0.85;background:var(--crit)" role="cell" title="Refining margin $0.85">$0.85</span>
+            <span class="gs" style="flex:0.60;background:var(--seg2)" role="cell" title="Taxes $0.60">$0.60</span>
+            <span class="gs" style="flex:0.80;background:var(--seg3)" role="cell" title="Distribution $0.80">$0.80</span>
+          </div>
+        </div>
+        <div class="grow" role="row">
+          <span class="glbl" role="rowheader">Sep 2026<b>$6.53</b></span>
+          <div class="gbar" style="width:100%">
+            <span class="gs" style="flex:2.31;background:var(--seg1)" role="cell" title="Crude $2.31">$2.31</span>
+            <span class="gs hot" style="flex:2.67;background:var(--crit)" role="cell" title="Refining margin $2.67">$2.67</span>
+            <span class="gs" style="flex:0.60;background:var(--seg2)" role="cell" title="Taxes $0.60">$0.60</span>
+            <span class="gs" style="flex:0.95;background:var(--seg3)" role="cell" title="Distribution $0.95">$0.95</span>
+          </div>
+        </div>
+      </div>
+      <p class="small">US average retail diesel, dollars per gallon. Our breakdown from EIA spot prices for the week of Sep 21: crude priced off WTI at $96.97, margin from NY Harbor ULSD spot, taxes are federal plus average state, distribution is the remainder. Priced off Brent instead, the margin is $2.21, still about equal to crude. EIA's own breakdown is published only through May.</p>
+    </div>
+  </section>
+
+  <section class="stack-lg">
+    <div class="stack col">
+      <h2>Three bottlenecks, stacked</h2>
+      <p>Each layer adds to the one before it. Crude sets the floor for every fuel. Refining capacity sets the diesel premium. California's market structure sets the extra $1.50 you pay in the Bay Area.</p>
+    </div>
+    <div class="three">
+      <div>
+        <span class="chip warn">Easing, slowly</span>
+        <h3>1. Crude: Hormuz and the Gulf</h3>
+        <ul class="facts">
+          <li>Brent at $106.87 and WTI at $94.85 on Sep 28. Brent futures peaked near $126 in April. Physical Dated Brent touched $130.80 on Sep 15, which is where the $130 talk comes from.</li>
+          <li>Gulf oil exports were about 13 mb/d in August, roughly half of pre-war (IEA). Kpler puts September at 12.8 of 18.8 mb/d.</li>
+          <li>Tankers now shuttle out under CENTCOM-coordinated transit windows. War-risk insurance runs 3–10% of hull value, against 0.2% before the war.</li>
+          <li>Saudi's Red Sea bypass pipeline was hit Sep 10–11. It restarted Sep 22 at about half capacity, with full recovery 6–8 weeks out. Aramco zeroed October crude to European term buyers.</li>
+          <li>US Strategic Petroleum Reserve is about 285 mb, the lowest since the early 1980s. SPR sales have ended.</li>
+        </ul>
+      </div>
+      <div>
+        <span class="chip crit">Worst on record</span>
+        <h3>2. Diesel: the world is short</h3>
+        <ul class="facts">
+          <li>Russia and Middle East diesel exports are down about 75% year over year. Nearly half of that drop is Russia (IEA, via Bloomberg's Javier Blas).</li>
+          <li>Russian refinery runs are down 30–50% depending on the tracker. Russia has banned diesel exports since Jul 8 and is set to extend the ban past Sep 30.</li>
+          <li>China's fuel stocks are at decade lows and Beijing is limiting exports. South Korea's gasoline exports fell by half.</li>
+          <li>US refiners are at their highest diesel run rates in 22 years and are exporting 1.7–1.9 mb/d. Distillate stocks are 12–13% under the five-year average.</li>
+          <li>Distillate stocks are the lowest for this time of year since 1982. The diesel margin over crude averaged about $110 a barrel in September, a record.</li>
+        </ul>
+      </div>
+      <div>
+        <span class="chip flat">Structural, steady</span>
+        <h3>3. California: an island market</h3>
+        <ul class="facts">
+          <li>Phillips 66 Los Angeles closed in Oct 2025 and Valero Benicia in early 2026. That is about 17% of state refining capacity gone.</li>
+          <li>CA now imports record volumes of gasoline and blendstocks, mostly from Asia, just as Asian exports collapsed.</li>
+          <li>Fixed costs of about $1.20 a gallon: state taxes and fees (74¢ incl. the 63.4¢ excise), cap-and-trade (~25¢), LCFS (~16¢), CARB-spec blend (~10¢).</li>
+          <li>GasBuddy blames this week's +14¢ on West Coast refinery snags. No specific outage has been reported publicly.</li>
+          <li>Newsom lifted the summer-blend rule statewide on Sep 28. That is worth roughly 10–15¢ over the next few weeks.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="stack-lg">
+    <div class="stack col">
+      <div class="eyebrow">Fact-check</div>
+      <h2>Is Ukraine bombing Russian refineries the cause?</h2>
+    </div>
+    <div class="verdict">
+      <div class="stack-lg">
+        <blockquote>"He has to stop knocking out diesel fuel in Russia."<cite>Trump to reporters at Doonbeg, Ireland, Sep 13, 2026</cite></blockquote>
+        <p><span class="chip warn">Partly true for diesel</span> <span class="chip crit">Wrong for gasoline and crude</span></p>
+        <p>The claim has a real core. Ukraine has knocked out enough Russian refining that Moscow banned diesel exports, and that pulled roughly 600,000 barrels a day of diesel off the world market this summer. Buyers in Europe and Latin America then bid for US Gulf Coast diesel, which pushes up the price at US pumps.</p>
+        <p>The claim goes wrong on scale. On Truth Social Trump said the diesel spike is mostly the Russia–Ukraine war and not Iran. The volumes say otherwise. From March to August the Gulf lost about 770,000 b/d of diesel exports against Russia's 350,000. By July–August the two were close to even. The IEA and the WSJ put Gulf losses at 2–3 times Russia's for the year. Crude is up because of Hormuz. Russia's refinery outages actually pushed more Russian crude onto the export market, which holds crude prices down a little.</p>
+        <p>The energy-strike truce Trump announced on Sep 14–15 did not hold. Both sides hit energy targets that same night, and Moscow's refinery was struck again on Sep 20.</p>
+      </div>
+      <div class="figure">
+        <div class="stack">
+          <h3>Share of the US diesel rise, Feb 23 to Sep 21</h3>
+          <p class="small">Diesel went from $3.81 to $6.53, up $2.72. Ranges are our estimate, built from IEA, Kpler, Vortexa and Bloomberg volume data and analyst commentary.</p>
+        </div>
+        <div class="ranges" role="table" aria-label="Estimated share of the diesel price rise by cause">
+          <div class="rrow" role="row"><span role="rowheader">Iran war / Gulf</span><div class="track"><div class="rng" style="left:55%;width:20%"></div></div><span class="val" role="cell">55–75%</span></div>
+          <div class="rrow" role="row"><span role="rowheader">Ukraine's strikes on Russia</span><div class="track"><div class="rng" style="left:15%;width:15%"></div></div><span class="val" role="cell">15–30%</span></div>
+          <div class="rrow" role="row"><span role="rowheader">US domestic factors</span><div class="track"><div class="rng" style="left:5%;width:10%"></div></div><span class="val" role="cell">5–15%</span></div>
+          <div class="axis" aria-hidden="true"><span></span><span class="ticks"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></span><span></span></div>
+        </div>
+        <hr class="sep">
+        <ul class="facts">
+          <li>Jul–Sep run-up only: Russia plausibly 30–50%. GasBuddy's De Haan says 60–65%, the high end of any estimate.</li>
+          <li>Gasoline: Russia's share is under 10%.</li>
+          <li>FGE's Eugene Lindell: Iran is bigger by volume, but prices are set at the margin.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="stack-lg col">
+    <div class="stack">
+      <div class="eyebrow">Julian's question</div>
+      <h2>If Iran has lost control of Hormuz, does Ukraine become the bigger issue?</h2>
+    </div>
+    <p>Alexander Stahel (@BurggrabenH) argues that Gulf oil exports are back to about 94% of their January level. ADNOC, then Aramco and Kuwait, built what he calls a "Hormuz Shuttle": about 116 tankers run the Oman coast in CENTCOM-coordinated windows and transfer cargo ship-to-ship in the Gulf of Oman.</p>
+    <p><strong>For diesel, mostly yes.</strong> Stahel's Sep 26 tally has Russian refinery runs at about 2.6 mb/d, down 51% from January, with 14 refineries offline and 17 strikes in the past four weeks. He expects no Russian diesel exports for the rest of 2026. If Gulf flows keep improving while Russia stays out, Russia's share of the diesel problem grows into winter.</p>
+    <p><strong>For crude and gasoline, not yet.</strong> 94% is the most optimistic count available. Kpler has September at about 68%, the WSJ at about 80% including bypass routes, and EIA still expects 5.7 mb/d shut in during Q4. Stahel himself posted a follow-up the same day: the shuttle is inefficient and product exports remain disrupted, so cracks, diesel and gasoline stay high even if crude falls below $100. And the Iran track just got worse: Trump rejected Tehran's seven-day plan to reopen the strait on Sep 26, and aides expect strikes to resume after the Nov 3 midterms.</p>
+  </section>
+
+  <section class="stack-lg">
+    <div class="stack col">
+      <h2>Claims going around on X</h2>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Claim</th><th>What the data says</th></tr></thead>
+        <tbody>
+          <tr><td>"California closed 12 refineries in the past 12 months"</td><td>False. Two closed: Phillips 66 Los Angeles (Oct 2025, 139k b/d) and Valero Benicia (early 2026, 145k b/d). Energy Secretary Wright's "two large refineries" is accurate. Martinez (2020) and Rodeo (2024) converted to renewable diesel earlier.</td></tr>
+          <tr><td>"It's Newsom, not the war"</td><td>Mostly false for the recent spike. California's premium over the US moved about 2¢ since February. The closures did widen it by about 20¢ between Sep 2025 and Feb 2026, and they make CA more exposed to Asian import disruptions.</td></tr>
+          <tr><td>"It's Ukraine, not Iran"</td><td>Partly true for diesel, false for gasoline and crude. See the fact-check above.</td></tr>
+          <tr><td>"Hormuz is back, so oil should crash"</td><td>Flows are recovering, but estimates range from 68% to 94%. Freight and insurance add $28–30/bbl, and product exports lag crude. Brent rose back to $107 today after the Iran proposal was rejected.</td></tr>
+          <tr><td>"A diesel export ban will fix it"</td><td>Unclear. Politico reported a 90-day ban plan on Sep 23 and ULSD futures fell 4%. The White House denied it, and Senate leader Thune says he is open to one. It would lower US diesel but push Latin America and Europe toward Russia, India and China.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="stack-lg">
+    <div class="stack col">
+      <h2>What to watch next</h2>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Signal</th><th>Why it matters</th><th>When</th></tr></thead>
+        <tbody>
+          <tr><td>Iran talks and post-midterm strikes</td><td>The biggest swing factor for crude, and therefore for gasoline everywhere.</td><td>Nov 3 onward</td></tr>
+          <tr><td>Russia's diesel export ban</td><td>Bloomberg reports it will run past Sep 30. Every month it lasts keeps global diesel tight into heating season.</td><td>Sep 30</td></tr>
+          <tr><td>Ukraine's strike tempo</td><td>17 strikes in four weeks. Damaged secondary units take 6–8 months to replace.</td><td>Ongoing</td></tr>
+          <tr><td>Saudi East–West pipeline</td><td>Full flow restores Red Sea exports to Europe and eases the Atlantic diesel market.</td><td>6–8 weeks</td></tr>
+          <tr><td>OPEC+ meeting</td><td>Spare capacity is mostly trapped behind Hormuz, so the signal matters more than the quota.</td><td>Oct 4</td></tr>
+          <tr><td>US diesel export ban decision</td><td>Could cut US diesel prices quickly and raise them abroad.</td><td>Pending</td></tr>
+          <tr><td>California winter blend and refinery restarts</td><td>A 10–15¢ relief for the Bay Area, if West Coast refineries come back on.</td><td>October</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="stack-lg">
+    <div class="stack col">
+      <h2>Worth following on X</h2>
+      <p class="small">These accounts post data, not slogans. Most of the partisan posts in the search results repeat the myths above.</p>
+    </div>
+    <div class="follow">
+      <div><a href="https://x.com/BurggrabenH" target="_blank" rel="noopener">@BurggrabenH</a>Alexander Stahel. Tanker tracking, Hormuz Shuttle, Russian refinery tally.</div>
+      <div><a href="https://x.com/JavierBlas" target="_blank" rel="noopener">@JavierBlas</a>Bloomberg Opinion columnist. IEA-sourced charts on diesel flows.</div>
+      <div><a href="https://x.com/GasBuddyGuy" target="_blank" rel="noopener">@GasBuddyGuy</a>Patrick De Haan. Weekly pump prices by state, refinery outages.</div>
+      <div><a href="https://x.com/Rory_Johnston" target="_blank" rel="noopener">@Rory_Johnston</a>Commodity Context. Diesel in $/bbl, market structure.</div>
+      <div><a href="https://x.com/staunovo" target="_blank" rel="noopener">@staunovo</a>Giovanni Staunovo, UBS. China stocks, US refinery runs.</div>
+      <div><a href="https://x.com/anasalhajji" target="_blank" rel="noopener">@anasalhajji</a>Anas Alhajji. Sharp questions on Saudi flows and export bans.</div>
+    </div>
+  </section>
+
+  <section class="stack">
+    <h3>Sources</h3>
+    <ul class="sources">
+      <li><a href="https://www.eia.gov/petroleum/gasdiesel/" target="_blank" rel="noopener">EIA Gasoline and Diesel Fuel Update</a> (weekly series)</li>
+      <li><a href="https://x.com/GasBuddyGuy/status/2104562173670215732" target="_blank" rel="noopener">GasBuddy weekly report, Sep 28</a></li>
+      <li><a href="https://x.com/BurggrabenH/status/2104361288000221497" target="_blank" rel="noopener">Stahel, "Iran Has Lost Control of The Strait"</a> and <a href="https://x.com/BurggrabenH/status/2104389213848318049" target="_blank" rel="noopener">follow-up</a></li>
+      <li><a href="https://x.com/BurggrabenH/status/2103875077083173256" target="_blank" rel="noopener">Stahel, Russian refining tally, Sep 26</a></li>
+      <li><a href="https://x.com/JavierBlas/status/2099532693184631108" target="_blank" rel="noopener">Blas, IEA diesel export chart, Sep 14</a></li>
+      <li><a href="https://www.pbs.org/newshour/world/trump-calls-on-ukraine-to-halt-strikes-on-russian-diesel-saying-attacks-are-causing-a-shortage" target="_blank" rel="noopener">PBS: Trump calls on Ukraine to halt strikes on Russian diesel</a></li>
+      <li><a href="https://finance.yahoo.com/energy/articles/iran-war-drives-bigger-diesel-190946460.html" target="_blank" rel="noopener">Bloomberg: Iran war drives bigger diesel loss than Russia</a></li>
+      <li><a href="https://politifact.com/article/2026/sep/15/diesel-oil-russia-ukraine-prices/" target="_blank" rel="noopener">PolitiFact on diesel, Russia and Ukraine</a></li>
+      <li><a href="https://www.nbcnews.com/world/ukraine/russia-ukraine-new-energy-attacks-trumps-ceasefire-claim-rcna597873" target="_blank" rel="noopener">NBC: energy attacks continue after truce claim</a></li>
+      <li><a href="https://www.bloomberg.com/news/articles/2026-09-21/russia-set-to-extend-diesel-export-ban-beyond-end-of-september" target="_blank" rel="noopener">Bloomberg: Russia to extend diesel export ban</a></li>
+      <li><a href="https://www.kpler.com/blog/russias-diesel-export-ban-adds-fresh-fuel-to-rising-prices" target="_blank" rel="noopener">Kpler: Russia's diesel export ban</a></li>
+      <li><a href="https://boereport.com/2026/09/27/mideast-oil-exports-rebound-in-september-as-saudi-arabia-boosts-shipments/" target="_blank" rel="noopener">Reuters/Kpler: Mideast exports rebound in September</a></li>
+      <li><a href="https://www.worldoil.com/news/2026/9/11/iea-cuts-2026-oil-supply-outlook-as-gulf-recovery-slips-to-2027/" target="_blank" rel="noopener">IEA September Oil Market Report (World Oil)</a></li>
+      <li><a href="https://www.eia.gov/outlooks/steo/report/global_oil.php" target="_blank" rel="noopener">EIA Short-Term Energy Outlook, September</a></li>
+      <li><a href="https://www.bloomberg.com/news/articles/2026-09-18/saudis-tell-european-refiners-they-ll-get-no-crude-next-month" target="_blank" rel="noopener">Bloomberg: Saudis tell European refiners no crude next month</a></li>
+      <li><a href="https://www.hydrocarbonprocessing.com/news/2026/09/saudi-east-west-pipeline-building-up-volumes-loading-yet-to-resume/" target="_blank" rel="noopener">Hydrocarbon Processing: East–West pipeline restart</a></li>
+      <li><a href="https://www.lloydslist.com/LL1156586/Gulf-war-risk-premiums-topping-double-digit-millions-of-dollars-per-trip" target="_blank" rel="noopener">Lloyd's List: Gulf war-risk premiums</a></li>
+      <li><a href="https://www.aljazeera.com/news/2026/9/27/better-deal-whats-behind-trumps-rejection-of-irans-truce-offer" target="_blank" rel="noopener">Al Jazeera: Trump rejects Iran's truce offer</a></li>
+      <li><a href="https://www.argusmedia.com/en/news-and-insights/latest-market-news/2819382-california-fuel-imports-soar-after-refinery-closures" target="_blank" rel="noopener">Argus: California fuel imports soar after closures</a></li>
+      <li><a href="https://www.energy.ca.gov/sites/default/files/2026-06/DPMO_California_Gasoline_Diesel_Market_Update_June_2026_ada.pdf" target="_blank" rel="noopener">CEC DPMO market update, June 2026</a></li>
+      <li><a href="https://www.gov.ca.gov/2026/09/28/governor-newsom-takes-action-to-help-lower-prices-amid-trumps-nationwide-gas-and-diesel-price-spike/" target="_blank" rel="noopener">Governor's office: summer-blend suspension, Sep 28</a></li>
+      <li><a href="https://thehill.com/policy/energy-environment/6107064-white-house-diesel-export-ban/" target="_blank" rel="noopener">The Hill: White House on diesel export ban</a></li>
+      <li><a href="https://www.thenationalnews.com/business/energy/2026/09/03/global-refining-crunch-to-keep-fuel-prices-high-into-2027/" target="_blank" rel="noopener">The National: refining crunch into 2027</a></li>
+    </ul>
+    <p class="small">Compiled Sep 28, 2026 by Claude (Anthropic's AI) for Julian Ibarz, from EIA data, news reporting and posts on X. Figures move daily. Where trackers disagree, the range is shown. Not investment advice.</p>
+  </section>
+</main>
+
+<script>
+(function () {
+  var D = {"dates":["2025-09-01","2025-09-08","2025-09-15","2025-09-22","2025-09-29","2025-10-06","2025-10-13","2025-10-20","2025-10-27","2025-11-03","2025-11-10","2025-11-17","2025-11-24","2025-12-01","2025-12-08","2025-12-15","2025-12-22","2025-12-29","2026-01-05","2026-01-12","2026-01-19","2026-01-26","2026-02-02","2026-02-09","2026-02-16","2026-02-23","2026-03-02","2026-03-09","2026-03-16","2026-03-23","2026-03-30","2026-04-06","2026-04-13","2026-04-20","2026-04-27","2026-05-04","2026-05-11","2026-05-18","2026-05-25","2026-06-01","2026-06-08","2026-06-15","2026-06-22","2026-06-29","2026-07-06","2026-07-13","2026-07-20","2026-07-27","2026-08-03","2026-08-10","2026-08-17","2026-08-24","2026-08-31","2026-09-07","2026-09-14","2026-09-21"],"usd":[3.734,3.766,3.739,3.749,3.754,3.711,3.665,3.62,3.718,3.753,3.837,3.868,3.831,3.758,3.665,3.607,3.544,3.5,3.477,3.459,3.53,3.624,3.681,3.688,3.711,3.809,3.897,4.859,5.071,5.375,5.401,5.643,5.608,5.403,5.351,5.64,5.639,5.596,5.523,5.35,5.21,5.059,4.832,4.668,4.578,4.796,5.134,5.313,5.348,5.257,5.454,5.652,5.599,5.967,6.285,6.529],"usg":[3.177,3.192,3.168,3.173,3.118,3.124,3.061,3.019,3.035,3.019,3.056,3.062,3.061,2.985,2.94,2.895,2.841,2.811,2.796,2.779,2.806,2.853,2.867,2.902,2.924,2.937,3.015,3.502,3.72,3.961,3.99,4.12,4.123,4.044,4.123,4.452,4.5,4.49,4.475,4.305,4.146,4.052,3.914,3.831,3.777,3.855,4.001,4.096,4.079,4.006,4.049,4.085,4.071,4.157,4.319,4.478],"cag":[4.397,4.422,4.468,4.468,4.446,4.452,4.457,4.426,4.358,4.434,4.5,4.476,4.404,4.357,4.273,4.163,4.076,4.042,4.034,3.978,3.977,4.04,4.177,4.314,4.417,4.441,4.475,5.093,5.383,5.65,5.711,5.769,5.731,5.648,5.785,5.959,5.969,5.957,5.911,5.853,5.696,5.554,5.387,5.245,5.175,5.2,5.354,5.489,5.495,5.428,5.397,5.45,5.52,5.678,5.827,6.003],"cad":[4.914,4.958,4.971,4.985,4.981,4.971,4.94,4.898,4.934,4.933,4.988,4.996,4.983,4.919,4.862,4.781,4.711,4.66,4.641,4.613,4.658,4.712,4.83,4.845,4.86,4.944,4.99,6.096,6.428,6.87,7.219,7.567,7.559,7.325,7.228,7.36,7.321,7.222,7.182,7.051,6.94,6.713,6.468,6.18,6.073,6.126,6.471,6.67,6.716,6.618,6.785,7.04,7.218,7.764,8.039,8.246]};
+  var t = D.dates.map(function (d) { return new Date(d + "T00:00:00Z").getTime(); });
+  var EV = [["A", "2026-02-28"], ["B", "2026-07-08"], ["C", "2026-09-10"]];
+  var W = 460, H = 280, M = { l: 38, r: 44, t: 14, b: 26 };
+  var y0 = 2.5, y1 = 9;
+  var t0 = t[0], t1 = t[t.length - 1];
+  function X(v) { return M.l + (v - t0) / (t1 - t0) * (W - M.l - M.r); }
+  function Y(v) { return M.t + (y1 - v) / (y1 - y0) * (H - M.t - M.b); }
+  var NS = "http://www.w3.org/2000/svg";
+  function el(n, a, p) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; }
+  var MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  function fmtD(ms) { var d = new Date(ms); return MON[d.getUTCMonth()] + " " + d.getUTCDate() + ", " + d.getUTCFullYear(); }
+
+  function panel(id, caKey, usKey) {
+    var host = document.getElementById(id);
+    var svg = el("svg", { viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": host.querySelector("h3").textContent + " prices, California vs US average, Sep 2025 to Sep 2026" }, host);
+    for (var v = 3; v <= 9; v += 1) {
+      el("line", { x1: M.l, x2: W - M.r, y1: Y(v), y2: Y(v), stroke: "var(--rule)", "stroke-width": 1 }, svg);
+      var tx = el("text", { x: M.l - 8, y: Y(v) + 4, "text-anchor": "end" }, svg); tx.textContent = "$" + v;
+    }
+    el("line", { x1: M.l, x2: W - M.r, y1: Y(6), y2: Y(6), stroke: "var(--ink-2)", "stroke-width": 1.2, "stroke-dasharray": "4 4" }, svg);
+    [["2025-10-01", "Oct"], ["2026-01-01", "Jan"], ["2026-04-01", "Apr"], ["2026-07-01", "Jul"], ["2026-09-01", "Sep"]].forEach(function (m) {
+      var x = X(new Date(m[0] + "T00:00:00Z").getTime());
+      var tt = el("text", { x: x, y: H - 6, "text-anchor": "middle" }, svg); tt.textContent = m[1];
+    });
+    var g = el("g", { "class": "ev" }, svg);
+    EV.forEach(function (e) {
+      var x = X(new Date(e[1] + "T00:00:00Z").getTime());
+      el("line", { x1: x, x2: x, y1: M.t + 12, y2: H - M.b, stroke: "var(--muted)", "stroke-width": 1, "stroke-dasharray": "2 3" }, g);
+      var tt = el("text", { x: x, y: M.t + 6, "text-anchor": "middle", "font-weight": "600" }, g); tt.textContent = e[0];
+    });
+    function line(key, color) {
+      var d = D[key].map(function (v, i) { return (i ? "L" : "M") + X(t[i]).toFixed(1) + "," + Y(v).toFixed(1); }).join("");
+      el("path", { d: d, fill: "none", stroke: color, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg);
+      var last = D[key][D[key].length - 1];
+      el("circle", { cx: X(t1), cy: Y(last), r: 4, fill: color, stroke: "var(--surface)", "stroke-width": 2 }, svg);
+      var lb = el("text", { x: X(t1) + 7, y: Y(last) + 4, "font-weight": "600", style: "fill:var(--ink)" }, svg); lb.textContent = "$" + last.toFixed(2);
+    }
+    line(usKey, "var(--us)");
+    line(caKey, "var(--ca)");
+    var cross = el("line", { y1: M.t, y2: H - M.b, stroke: "var(--ink-2)", "stroke-width": 1, opacity: 0 }, svg);
+    var dCa = el("circle", { r: 4.5, fill: "var(--ca)", stroke: "var(--surface)", "stroke-width": 2, opacity: 0 }, svg);
+    var dUs = el("circle", { r: 4.5, fill: "var(--us)", stroke: "var(--surface)", "stroke-width": 2, opacity: 0 }, svg);
+    var hit = el("rect", { x: M.l, y: M.t, width: W - M.l - M.r, height: H - M.t - M.b, fill: "transparent" }, svg);
+    var tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; host.appendChild(tip);
+    function move(ev) {
+      var r = svg.getBoundingClientRect(), sx = (ev.clientX - r.left) / r.width * W;
+      var ms = t0 + (sx - M.l) / (W - M.l - M.r) * (t1 - t0), i = 0, best = Infinity;
+      t.forEach(function (v, k) { var dd = Math.abs(v - ms); if (dd < best) { best = dd; i = k; } });
+      var x = X(t[i]);
+      cross.setAttribute("x1", x); cross.setAttribute("x2", x); cross.setAttribute("opacity", 0.5);
+      dCa.setAttribute("cx", x); dCa.setAttribute("cy", Y(D[caKey][i])); dCa.setAttribute("opacity", 1);
+      dUs.setAttribute("cx", x); dUs.setAttribute("cy", Y(D[usKey][i])); dUs.setAttribute("opacity", 1);
+      var gap = D[caKey][i] - D[usKey][i];
+      tip.innerHTML = "<b>Week of " + fmtD(t[i]) + "</b><br>California $" + D[caKey][i].toFixed(2) + "<br>US average $" + D[usKey][i].toFixed(2) + "<br>CA premium $" + gap.toFixed(2);
+      tip.hidden = false;
+      var hr = host.getBoundingClientRect(), px = r.left - hr.left + x / W * r.width, py = r.top - hr.top + Y(D[caKey][i]) / H * r.height - 12;
+      px = Math.max(80, Math.min(hr.width - 80, px));
+      tip.style.left = px + "px"; tip.style.top = py + "px";
+    }
+    function out() { cross.setAttribute("opacity", 0); dCa.setAttribute("opacity", 0); dUs.setAttribute("opacity", 0); tip.hidden = true; }
+    hit.addEventListener("pointermove", move);
+    hit.addEventListener("pointerleave", out);
+  }
+  panel("p-gas", "cag", "usg");
+  panel("p-dsl", "cad", "usd");
+
+  var btn = document.getElementById("copyBtn"), pre = document.getElementById("pasteText");
+  btn.addEventListener("click", function () {
+    var txt = pre.textContent;
+    function sel() { var r = document.createRange(); r.selectNodeContents(pre); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected, press ⌘C"; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy text"; }, 1800); }, sel);
+    } else { sel(); }
+  });
+})();
+</script>
+</body>
+</html>
